@@ -1,6 +1,6 @@
 # 🚀 startctf
 
-[Demo](/demo.gif)
+![Demo](/demo.gif)
 Script en Bash para automatizar la creación de estructuras de trabajo para máquinas CTF (HTB, TryHackMe, etc.)
 
 Organiza automáticamente carpetas, notas, archivos y lanza escaneos con Nmap para comenzar cada laboratorio de forma rápida y ordenada.
@@ -10,6 +10,8 @@ Organiza automáticamente carpetas, notas, archivos y lanza escaneos con Nmap pa
 ## 📦 Instalación
 
 ### 🔁 Clonar el repositorio
+
+```bash
 
 ```bash
 git clone https://github.com/villaarreola/startctf.git
