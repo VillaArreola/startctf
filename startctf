@@ -1,0 +1,62 @@
+#!/bin/bash
+
+PLATFORM=$1
+NAME=$2
+IP=$3
+
+if [[ -z "$PLATFORM" || -z "$NAME" || -z "$IP" ]]; then
+    echo "Uso: startctf <plataforma> <nombre> <IP>"
+    echo "Ejemplo: startctf htb Bricks 10.10.11.123"
+    exit 1
+fi
+
+# Verificar si la IP responde antes de continuar
+if ! ping -c 1 -W 1 "$IP" &>/dev/null; then
+    echo -e "\e[1;31m❌ Tartget  $IP No responde al ping \e[0m"
+    echo -e "🚫 Abortando.\n"
+
+    exit 1
+fi
+
+
+# Setear target
+echo "$IP" > ~/.target
+export TARGET="$IP"
+echo "🎯 Target seteado: $TARGET"
+# Crear carpeta base
+CTF_DIR=~/ctf/$PLATFORM/$NAME
+mkdir -p "$CTF_DIR"/{files,scripts,nmap}
+
+# Crear archivos vacíos
+
+touch "$CTF_DIR/notes.md"
+touch "$CTF_DIR/users.txt"
+touch "$CTF_DIR/passwd.txt"
+
+echo -e "🛰 Iniciando escaneo Nmap. >>>  \e[1;36m$CTF_DIR/nmap/scan.*\e[0m"
+
+nmap -sC -sV -T4 -oA "$CTF_DIR/nmap/scan" "$TARGET" &>/dev/null
+
+echo "📁 Estructura creada en:"
+
+
+
+
+
+# Mostrar estructura (opcional)
+tree --noreport "$CTF_DIR" 2>/dev/null || ls -R "$CTF_DIR"
+ 
+echo
+
+
+echo -e "\e[10;32m  Ruta copiada en Clipboard\e[0m"
+
+echo
+echo -e  " \e[1;32m$CTF_DIR\e[0m"
+
+
+
+echo "$CTF_DIR/nmap" | xclip -selection clipboard
+
+notify-send "Ruta copiada" "$CTF_DIR/nmap"
+
