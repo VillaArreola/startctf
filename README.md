@@ -13,7 +13,7 @@ Organiza automáticamente carpetas, notas, archivos y lanza escaneos con Nmap pa
 
 ```bash
 
-```bash
+
 git clone https://github.com/villaarreola/startctf.git
 cd startctf
 sudo cp startctf /usr/local/bin/
