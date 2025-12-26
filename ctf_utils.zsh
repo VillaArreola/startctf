@@ -3,9 +3,9 @@
 
 # --- CONFIGURATION (EDIT THIS) ---
 # Define tus rutas absolutas aquí
-VPN_PATH_HTB="$HOME/MEGA/vpn/HTBVPN.ovpn"
-VPN_PATH_CYBER="$HOME/MEGA/vpn/CyberVPN.ovpn"
-VPN_PATH_THM="$HOME/MEGA/vpn/THMVPN.ovpn"
+VPN_PATH_HTB="$HOME/MEGA/VPN/HTBVPN.ovpn"
+VPN_PATH_CYBER="$HOME/MEGA/VPN/CyberVPN.ovpn"
+VPN_PATH_THM="$HOME/MEGA/VPN/THMVPN.ovpn"
 
 # Carpeta base donde guardarás los archivos de los CTFs
 BASE_WORK_DIR="$HOME/MEGA"
@@ -14,7 +14,7 @@ BASE_WORK_DIR="$HOME/MEGA"
 # 1. setear y mostrar Target en el panel de kali
 # ------------------------------------------
 function ip-target() {
-    local TARGET_FILE="$HOME/.config/target_ip"  #necepara mostar en el panel de kali
+    local TARGET_FILE="$HOME/.config/target_ip"  #necesaria para mostrar en el panel de kali
 
     if [ "$1" = "clear" ]; then
         unset TARGET
@@ -116,7 +116,7 @@ function startctf() {
     local NAME=$2
     local IP=$3
 
-    if [[ -z "$PLATFORM" || -z "$NAME" || -z "$IP" ]]; theokn
+    if [[ -z "$PLATFORM" || -z "$NAME" || -z "$IP" ]]; then
         echo "Uso: startctf <plataforma> <nombre> <IP>"
         echo "Ej:  startctf htb Sherlock 10.10.11.123"
         return 1
